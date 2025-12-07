@@ -1,5 +1,3 @@
-from itertools import combinations
-
 with open("test.txt") as f:
     banks = [bank.rstrip() for bank in f.readlines()]
 
@@ -16,17 +14,33 @@ answer = 0
 for bank in banks:
     joltage = list(int(i) for i in bank)
 
-    i = 1
-    while len(joltage) != 12:
-        while joltage.count(i) != 0 and len(joltage) != 12:
-            joltage = remove_last_occurence(joltage, i)
-        i += 1
+    maxi = []
+    while len(maxi) <= 12:
+        i = 9
+        while i > 0:
+            j = 0
+            while j < len(joltage):
+                if (
+                    joltage[j] == i
+                    and len(maxi) < 12
+                    and len(joltage[joltage.index(i) :]) >= (11 - len(maxi))
+                ):
+                    maxi.append(joltage[j])
+                    i = 9
+                    del joltage[0 : j + 1]
+                    j = 0
+                    break
+                j += 1
+            i -= 1
+    print(maxi)
+    # s = [str(i) for i in maxi]
+    # A = ""
+    # for i in s:
+    #     A = A + i
+    # answer += int(A)
+    # print(int(A))
 
-    # converting maximum possible joltage of this bank from list to string
-    sjolt = ""
-    for i in joltage:
-        sjolt += str(i)
-    print(sjolt)
-    answer += int(sjolt)
-
-print(answer)
+# 9876543211111 987654321111
+# 8111111111111 811111111119
+# 4444333222888 434234234278
+# 8881111111111 888911112111
