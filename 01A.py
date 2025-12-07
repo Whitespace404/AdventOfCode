@@ -1,4 +1,4 @@
-with open("test.txt") as f:
+with open("01.txt") as f:
     instructions = [L.rstrip() for L in f.readlines()]
 
 
