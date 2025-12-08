@@ -18,20 +18,20 @@ for bank in banks:
     while len(maxi) <= 12:
         i = 9
         while i > 0:
-            j = 0
-            while j < len(joltage):
+            if i in joltage:
+                print(i, end="\t")
+                print(len(joltage[joltage.index(i) :]) - 1 >= (12 - len(maxi)))
                 if (
-                    joltage[j] == i
+                    len(joltage[joltage.index(i) :]) - 1 >= (12 - len(maxi))
                     and len(maxi) < 12
-                    and len(joltage[joltage.index(i) :]) >= (11 - len(maxi))
                 ):
-                    maxi.append(joltage[j])
+                    maxi.append(i)
+                    joltage = joltage[0 : joltage.index(i) + 1]
                     i = 9
-                    del joltage[0 : j + 1]
-                    j = 0
-                    break
-                j += 1
-            i -= 1
+                else:
+                    i -= 1
+            else:
+                i -= 1
     print(maxi)
     # s = [str(i) for i in maxi]
     # A = ""
