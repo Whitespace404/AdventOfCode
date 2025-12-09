@@ -1,17 +1,5 @@
 # My attempt at [Advent of Code 2023]("https://adventofcode.com/2023")
 
-<!--
-α 224
-β 225
-η 951
-ω 969
-θ 952
-λ 955
-μ 956
-π 227
-σ 963 
-φ 966   
--->
 
 | Day | Part 1   | Rank   | Part 2   | Rank     |
 | --- | -------- | ------ | -------- | -------- |
